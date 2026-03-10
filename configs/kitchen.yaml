@@ -1,0 +1,62 @@
+env_id: "FrankaKitchen-v1"
+seed: 0
+torch_deterministic: True
+cuda: True
+env_obs_transform: "obs"
+env_kitchen_task: "microwave"
+# env_kitchen_task: "kettle"
+# env_kitchen_task: "light switch"
+# env_kitchen_task: "slide cabinet"
+# env_kitchen_task: "hinge cabinet"
+# env_kitchen_task: "top burner"
+# env_kitchen_task: "bottom burner"
+
+# flow args
+flow_num_layers: 10
+flow_hidden_dim: 256
+flow_training_epochs: 100
+flow_batch_size: 64
+flow_lr: 0.0001
+flow_grad_clip: 1.0
+flow_base_dist_scale: 0.2
+flow_lambda_ic: 0.001
+flow_lambda_fs: 0.001
+flow_sigma_a: 0.01
+flow_sigma_z: 0.01
+flow_data_path: "data/kitchen/microwave.pkl"
+flow_wd: 0.0
+# flow_data_path: "data/kitchen/kettle.pkl"
+# flow_data_path: "data/kitchen/light_switch.pkl"
+# flow_data_path: "data/kitchen/slide_cabinet.pkl"
+# flow_data_path: "data/kitchen/hinge_cabinet.pkl"
+# flow_data_path: "data/kitchen/top_burner.pkl"
+# flow_data_path: "data/kitchen/bottom_burner.pkl"
+
+# sac args
+sac_total_timesteps: 100000  # times number of parallel envs
+sac_parallel_envs: 10
+sac_buffer_size: 1000000
+sac_discount_factor: 0.995
+sac_polyak_factor: 0.01
+sac_batch_size: 256
+sac_learning_starts: 10000
+sac_actor_lr: 0.0003
+sac_critic_lr: 0.001
+sac_entropy_alpha: 0.1
+sac_autotune_alpha: False
+sac_il_coef: 0.0
+sac_il_q_filter: False
+sac_il_data_paths: ["data/kitchen/microwave.pkl"]
+# sac_il_data_paths: ["data/kitchen/kettle.pkl"]
+# sac_il_data_paths: ["data/kitchen/light_switch.pkl"]
+# sac_il_data_paths: ["data/kitchen/slide_cabinet.pkl"]
+# sac_il_data_paths: ["data/kitchen/hinge_cabinet.pkl"]
+# sac_il_data_paths: ["data/kitchen/top_burner.pkl"]
+# sac_il_data_paths: ["data/kitchen/bottom_burner.pkl"]
+
+# apc & parrot args
+apc_flow_paths: ["trained_flows/MyCarRacing-v1-2026-02-12_18-00-59-seed1"]
+apc_selector_boltzmann_temp: 1.0
+apc_use_parrot: False
+
+

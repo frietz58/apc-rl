@@ -1,0 +1,55 @@
+env_id: "PointMaze_Large_Diverse_GDense-v3"
+seed: 0
+torch_deterministic: True
+cuda: True
+env_obs_transform: "obs"
+env_task: "gtl"
+# env_task: "gtr"
+# env_task: "gbl"
+# env_task: "gbr"
+env_ep_len: 400
+
+# flow args
+flow_num_layers: 10
+flow_hidden_dim: 256
+flow_training_epochs: 100
+flow_batch_size: 64
+flow_lr: 0.0001
+flow_grad_clip: 1.0
+flow_base_dist_scale: 0.2
+flow_lambda_ic: 0.001
+flow_lambda_fs: 0.001
+flow_sigma_a: 0.01
+flow_sigma_z: 0.01
+flow_wd: 0.0
+flow_data_path: "data/maze/goal_bottom_left.pkl"
+# flow_data_path: "data/maze/goal_bottom_right.pkl"
+# flow_data_path: "data/maze/goal_top_left.pkl"
+# flow_data_path: "data/maze/goal_top_right.pkl"
+
+# sac args
+sac_total_timesteps: 100000  # times number of parallel envs
+sac_parallel_envs: 5
+sac_buffer_size: 1000000
+sac_discount_factor: 0.995
+sac_polyak_factor: 0.005
+sac_batch_size: 256
+sac_learning_starts: 10000
+sac_actor_lr: 0.0003
+sac_critic_lr: 0.001
+sac_entropy_alpha: 0.1
+sac_autotune_alpha: False
+sac_il_coef: 0.0
+sac_il_q_filter: False
+sac_il_data_paths: ["data/maze/goal_bottom_left.pkl"]
+# sac_il_data_paths: ["data/maze/goal_bottom_right.pkl"]
+# sac_il_data_paths: ["data/maze/goal_top_left.pkl"]
+# sac_il_data_paths: ["data/maze/goal_top_right.pkl"]
+
+# apc & parrot args
+apc_flow_paths: ["trained_flows/MyCarRacing-v1-2026-02-12_18-00-59-seed1"]
+apc_selector_boltzmann_temp: 1.0
+apc_use_parrot: False
+
+
+
